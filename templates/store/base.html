@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{%block title %}Srinidhi Mateti{% endblock %}</title>
+  <!-- bs-5 -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+  <!-- stylesheet(s) -->
+  <style>
+    .display-1,
+    display-2,
+    display-3 {
+      font-family: 'League Spartan', sans-serif;
+    }
+
+    .display-1 {
+      font-size: 7em;
+      color: #5464F9;
+    }
+
+    .nav-item {
+      font-family: 'Nunito', sans-serif;
+
+      font-size: 1em;
+      line-height: 20px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #5464F9;
+    }
+
+    .bgblack {
+      background: #FFDBDB;
+    }
+
+    #hp-section-1 {
+      background: #FFDBDB;
+    }
+
+    .navborder {
+      border-bottom: .1px solid grey;
+    }
+
+    .p-s-1 {
+      color: #5464F9;
+    }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&family=League+Spartan:wght@600&family=Nunito&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-md navbar-light bgblack navbar-fixed-top px-5 border-bottom-1 navborder">
+    <div class="container-fluid ">
+      <a class='navbarbrand' href='/'><img src="media/images/Logo25px.png" width=100px alt=""><a />
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item p-lg-3">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item p-lg-3">
+              <a class="nav-link active" href="#">About</a>
+            </li>
+            <li class="nav-item p-lg-3">
+              <a class="nav-link active" href="#">Enquire</a>
+            </li>
+
+            <li class="nav-item dropdown p-lg-3 active">
+              <a class="nav-link active dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Shop
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="{% url "store:product_all"%}">All</a></li>
+                {% for c in categories%}
+
+                <li>
+                  <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{c.name | title}}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+
+            </li>
+            <li class="nav-item p-lg-3">
+              <a class="nav-link active" href="#">Blog</a>
+            </li>
+            <li class="nav-item p-lg-3">
+              <a class="nav-link active" href="#">Contact</a>
+
+
+
+          </ul>
+          <a type="button" role="button" href="{% url "basket:basket_summary"%}" class="btn btn-outline-secondary">
+            <div class="d-inline-flex">1</div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+              <path
+                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+            </svg>
+            Cart
+          </a>
+
+        </div>
+
+
+    </div>
+  </nav>
+  <!-- navbar -->
+  <div id="content">{% block content%}{% endblock%}</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+</script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <!-- section-2 -->
+  <section id="hp-section-2 ">
+    <div class="vh-100 p-0 m-0 d-flex flex-column justify-content-center">
+    <div class="container-fluid m-0">
+        <h2 class="display-2">{{category.name | title}}</h2>
+        <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium omnis iure ab, quia expedita dignissimos aliquam debitis eum magnam, nam qui quaerat cumque molestias laboriosam, aut modi non id? Mollitia?</p>
+    </div>
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        {% for product in products %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="img-fluid" alt="responsive-image" src="{{ product.image.url }}">
+
+            <div class="card-body">
+              <p class="card-text">
+                  <a class="text-dark text-decoration-none" href="{{product.get_absolute_url}}">{{product.title}}</a>
+                </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+</div>
+
+{% endblock  %}
